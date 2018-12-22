@@ -4,14 +4,14 @@ services:
   app-1:
     container_name: node-nginx-1
     #build: ./
-    image: node-nginx:2.0
+    image: node-nginx:2.2
     ports:
       - 3000
 
   app-2:
     container_name: node-nginx-2
     #build: ./
-    image: node-nginx:2.0
+    image: node-nginx:2.2
     ports:
       - 3000
 

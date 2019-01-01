@@ -1,10 +1,13 @@
 
-## docker build
-```sudo docker build --tag node-nginx:latest .```
 
-```cd nginx```
+### ~~docker build~~
+~~```sudo docker build --tag node-nginx:latest .```~~
 
-```sudo docker build --tag nginx-app:latest .```
+~~```cd nginx```~~
 
-## docker-compose up (run)
+~~```sudo docker build --tag nginx-app:latest .```~~
+
+
+### docker-compose up
 ```sudo docker-compose up```
+

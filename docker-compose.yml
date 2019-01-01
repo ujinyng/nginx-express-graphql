@@ -1,19 +1,23 @@
-version: '2.2'
+version: '2.3'
 
 services:
   app-1:
     container_name: node-nginx-1
-    #build: ./
-    image: node-nginx:2.2
+    build: ./
+    #image: node-nginx:latest
     ports:
       - 3000
+    volumes:
+      - ./app:/app
 
   app-2:
     container_name: node-nginx-2
-    #build: ./
-    image: node-nginx:2.2
+    build: ./
+    #image: node-nginx:latest
     ports:
       - 3000
+    volumes:
+      - ./app:/app
 
   nginx:
     container_name: nginx-app

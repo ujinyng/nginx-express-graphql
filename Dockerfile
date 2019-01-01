@@ -6,8 +6,9 @@ MAINTAINER Jinyoung Yoo y@ujinyoung.com
 WORKDIR ./app
 ADD ./app /app
 
-RUN cd /app
-RUN npm install
+#docker-compse app에 volume 추가하면서 제거
+#RUN cd /app
+#RUN npm install
 
 EXPOSE 3000
 

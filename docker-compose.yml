@@ -1,4 +1,4 @@
-version: '2.3'
+version: '3.0'
 
 services:
   app-1:
@@ -26,8 +26,21 @@ services:
     links:
       - app-1:app-1
       - app-2:app-2
+      - mongodb:mongodb
     ports:
       - 3000:80
     depends_on:
       - app-1
       - app-2
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --logpath=/dev/null 

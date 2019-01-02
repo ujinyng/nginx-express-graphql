@@ -1,5 +1,5 @@
 #!/bin/bash
-#dockersh.sh
+#mongo.sh
 
 sudo docker exec -t -i mongodb /bin/bash
 

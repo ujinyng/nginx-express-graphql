@@ -1,5 +1,5 @@
 #!/bin/bash
-#dockersh.sh
+#app.sh
 
 sudo docker exec -t -i nginx-app /bin/bash
 

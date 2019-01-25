@@ -1,5 +1,5 @@
 #!/bin/bash
-#rmdocker.sh
+#start.sh
 
 sudo docker-compose up
 

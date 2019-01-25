@@ -1,9 +1,23 @@
 
+## version 3.0
 
+### Build docker image 
+Before start, you should build docker image. (only when first start)
 
-### Start command
-```sh start.sh```
+```sh build.sh```
 or
+
+```sudo docker build --tag node-nginx:latest .```
+
+```cd nginx```
+
+```sudo docker build --tag nginx-app:latest .```
+
+
+### Start
+``` sh start.sh```
+or
+
 ```sudo docker-compose up```
 
 then start node-nginx-1, node-nginx-2, nginx-app, mongodb containers
@@ -17,13 +31,3 @@ then start node-nginx-1, node-nginx-2, nginx-app, mongodb containers
 ### Execute nginx-app shell (When running)
 ```sh app.sh```
 
-
-### ~~docker build~~ (Not required)
-~~```build.sh```~~ (each directory)
-or
-
-~~```sudo docker build --tag node-nginx:latest .```~~ (root diredtory)
-
-~~```cd nginx```~~
-
-~~```sudo docker build --tag nginx-app:latest .```~~ (nginx directory)

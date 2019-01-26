@@ -1,5 +1,5 @@
 
-## version 3.0
+Docker Engine version is 18.06.0 and higher
 
 ### Build docker image 
 Before start, you should build docker image. (only when first start)

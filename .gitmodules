@@ -1,0 +1,3 @@
+[submodule "decipher_page"]
+	path = app
+	url = https://github.com/CPark-02F/decipher_page.git

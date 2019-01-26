@@ -10,7 +10,8 @@ ADD ./app /app
 #RUN cd /app
 #RUN npm install
 
-EXPOSE 3000
+EXPOSE 4000
+#3000
 
 ENV NODE_ENV=production
 CMD npm start

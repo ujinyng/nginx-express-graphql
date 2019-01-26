@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.1'
 
 services:
   app-1:
@@ -6,7 +6,7 @@ services:
     build: ./
     #image: node-nginx:latest
     ports:
-      - 3000
+      - 4000
     volumes:
       - ./app:/app
 
@@ -15,7 +15,7 @@ services:
     build: ./
     #image: node-nginx:latest
     ports:
-      - 3000
+      - 4000
     volumes:
       - ./app:/app
 
@@ -28,7 +28,7 @@ services:
       - app-2:app-2
       - mongodb:mongodb
     ports:
-      - 3000:80
+      - 4000:80
     depends_on:
       - app-1
       - app-2
@@ -36,11 +36,17 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongodb
+    restart: always
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+#      - MONGO_INITDB_DATABASE=decipher
     volumes:
       - ./data/db:/data/db
+      - ./data/db/initdb:/docker-entrypoint-initdb.d
     ports:
       - 27017:27017
-    command: mongod --logpath=/dev/null 
+    command: mongod --auth admin
+#--authenticationDatabase admin --logpath=/dev/null 

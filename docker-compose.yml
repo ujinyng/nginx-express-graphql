@@ -9,6 +9,12 @@ services:
       - 4000
     volumes:
       - ./app:/app
+    links:
+     - mongodb:mongodb
+    depends_on:
+      - mongodb
+    environment:
+     - MONGODB_URI='mongodb://mongodb:27017/'
 
   app-2:
     container_name: node-nginx-2
@@ -18,6 +24,12 @@ services:
       - 4000
     volumes:
       - ./app:/app
+    links:
+      - mongodb:mongodb
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI='mongodb://mongodb:27017/admin"
 
   nginx:
     container_name: nginx-app
@@ -32,9 +44,12 @@ services:
     depends_on:
       - app-1
       - app-2
+      - mongodb
+
   
   mongodb:
     image: mongo:latest
+    hostname: mongodb
     container_name: mongodb
     restart: always
     environment:
@@ -42,11 +57,15 @@ services:
       - MONGO_LOG_DIR=/dev/null
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=pass
-#      - MONGO_INITDB_DATABASE=decipher
+      - MONGO_INITDB_DATABASE=admin
     volumes:
       - ./data/db:/data/db
-      - ./data/db/initdb:/docker-entrypoint-initdb.d
+      - ./initdb:/docker-entrypoint-initdb.d
     ports:
       - 27017:27017
-    command: mongod --auth admin
+    command: mongod --auth --bind_ip_all
+
+#mongo command is mongo -u "admin" -p "pass" leekt.page:27017/admin --authenticationDatabase "admin"
+
+#--config /data/db/mongod.conf  사용안하기로
 #--authenticationDatabase admin --logpath=/dev/null 
